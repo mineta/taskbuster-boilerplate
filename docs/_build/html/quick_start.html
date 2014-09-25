@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Quick Start Guide &mdash; TaskBuster 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="TaskBuster 0.1.0 documentation" href="index.html" />
+    <link rel="prev" title="Requirements" href="requirements.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="requirements.html" title="Requirements"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">TaskBuster 0.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="quick-start-guide">
+<h1>Quick Start Guide<a class="headerlink" href="#quick-start-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="download-taskbuster-django-project-boilerplate">
+<h2>Download TaskBuster Django Project Boilerplate<a class="headerlink" href="#download-taskbuster-django-project-boilerplate" title="Permalink to this headline">¶</a></h2>
+<p>First, you need to download the BoilerPlate from GitHub.</p>
+<p>You can visit the repository webpage in <a href="https://github.com/mineta/taskbuster-boilerplate.git" target="_blank">
+GitHub</a> and download it as a zip file.</p>
+<p>You can also do the same using your terminal with:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git clone git://github.com/mineta/taskbuster-boilerplate.git
+</pre></div>
+</div>
+<p>This will download the repository in your current direcotry.</p>
+</div>
+<div class="section" id="secret-django-key">
+<h2>Secret Django Key<a class="headerlink" href="#secret-django-key" title="Permalink to this headline">¶</a></h2>
+<p>This boilerplate has the <strong>DJANGO_KEY</strong> setting variable hidden.</p>
+<p>You can generate your DJANGO_KEY <a href="http://www.miniwebtool.com/django-secret-key-generator"
+target="_blank">here</a>.</p>
+<p>Keep reading to include your new Django key into your project.</p>
+</div>
+<div class="section" id="project-name">
+<h2>Project Name<a class="headerlink" href="#project-name" title="Permalink to this headline">¶</a></h2>
+<p>This project is named <em>TaskBuster</em>, so if you are using this
+Boilerplate to create your own project, you&#8217;ll have to change
+the name in a few places:</p>
+<blockquote>
+<div><ul class="simple">
+<li><em>taskbuster_project</em> <strong>folder</strong> (your top project container)</li>
+<li><em>taskbuster_project/taskbuster</em> <strong>folder</strong> (your project name)</li>
+<li>virtual environment names: <strong>tb_dev</strong> and <strong>tb_test</strong> (name them whatever you want)</li>
+<li>in virtual environments <strong>postactivate</strong> files (see section below), you have to change <strong>taskbuster.settings.development</strong> for your <strong>projectname.settings.development</strong>. Same works for the testing environment.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="virtual-environments-and-settings-files">
+<h2>Virtual environments and Settings Files<a class="headerlink" href="#virtual-environments-and-settings-files" title="Permalink to this headline">¶</a></h2>
+<p>First, you must know your Python 3 path:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ which python3
+</pre></div>
+</div>
+<p>which is something similar to /usr/local/bin/python3.</p>
+<p>Next, create a Development virtual environment with Python 3 installed:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ mkvirtualenv --python=/usr/local/bin/python3 tb_dev
+</pre></div>
+</div>
+<p>where you might need to change it with your python path.</p>
+<p>Go to the virtual enviornment folder with:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ cd $VIRTUAL_ENV/bin
+</pre></div>
+</div>
+<p>and edit the postactivate file.:</p>
+<blockquote>
+<div>$ vi postactivate</div></blockquote>
+<p>You must add the lines:</p>
+<div class="highlight-python"><div class="highlight"><pre>export DJANGO_SETTINGS_MODULE=&quot;taskbuster.settings.development&quot;
+export SECRET_KEY=&quot;your_secret_django_key&quot;
+</pre></div>
+</div>
+<p>with your project name and your own secret key.</p>
+<p>Next, edit the <strong>predeactivate</strong> file and add the line:</p>
+<div class="highlight-python"><div class="highlight"><pre>unset SECRET_KEY
+</pre></div>
+</div>
+<p>Repeat the last steps for your testing environment:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ mkvirtualenv --python=/usr/local/bin/python3 tb_test
+$ cd $VIRTUAL_ENV/bin
+$ vi postactivate
+</pre></div>
+</div>
+<p>where you have to add the lines:</p>
+<div class="highlight-python"><div class="highlight"><pre>export DJANGO_SETTINGS_MODULE=&quot;taskbuster.settings.testing&quot;
+export SECRET_KEY=&quot;your_secret_django_key&quot;
+</pre></div>
+</div>
+<p>and in the predeactivate file:</p>
+<div class="highlight-python"><div class="highlight"><pre>unset SECRET_KEY
+</pre></div>
+</div>
+<p>Next, install the packages in each environment:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ workon tb_dev
+$ pip install -r requirements/development.txt
+$ workon tb_test
+$ pip install -r requirements/testing.txt
+</pre></div>
+</div>
+</div>
+<div class="section" id="internationalization-and-localization">
+<h2>Internationalization and Localization<a class="headerlink" href="#internationalization-and-localization" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="settings">
+<h3>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h3>
+<p>The default language for this Project is <strong>English</strong>, and we use internatinalization to translate the text into Catalan.</p>
+<p>If you want to change the translation language, or include a new one, you just need to modify the <strong>LANGUAGES</strong> variable in the file <em>settings/base.py</em>. The language codes that define each language can be found <a href="http://msdn.microsoft.com/en-us/library/ms533052(v=vs.85).aspx" target="_blank">here</a>.</p>
+<p>For example, if you want to use German you should include:</p>
+<div class="highlight-python"><div class="highlight"><pre>LANGUAGES = (
+    ...
+    &#39;de&#39;, _(&quot;German&quot;),
+    ...
+)
+</pre></div>
+</div>
+<p>You can also specify a dialect, like Luxembourg&#8217;s German with:</p>
+<div class="highlight-python"><div class="highlight"><pre>LANGUAGES = (
+    ...
+    &#39;de-lu&#39;, _(&quot;Luxemburg&#39;s German&quot;),
+    ...
+)
+</pre></div>
+</div>
+<p>Note: the name inside the translation function _(&#8220;&#8221;) is the language name in the default language (English).</p>
+<p>More information on the <a href="http://marinamele.com/taskbuster-django-tutorial/internationalization-localization-languages-time-zones" target="_blank">TaskBuster post</a>.</p>
+</div>
+<div class="section" id="translation">
+<h3>Translation<a class="headerlink" href="#translation" title="Permalink to this headline">¶</a></h3>
+<p>Go to the terminal, inside the taskbuster_project folder and create the files to translate with:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ python manage.py makemessages -l ca
+</pre></div>
+</div>
+<p>change the language &#8220;ca&#8221; for your selected language.</p>
+<p>Next, go to the locale folder of your language:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ cd taskbuster/locale/ca/LC_MESSAGES
+</pre></div>
+</div>
+<p>where taskbuster is your project folder. You have to edit the file <em>django.po</em> and translate the strings. You can find more information about how to translate the strings <a href="http://marinamele.com/taskbuster-django-tutorial/internationalization-localization-languages-time-zones#inter-translation" target="_blank">here</a>.</p>
+<p>Once the translation is done, compile your messages with:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ python manage.py compilemessages -l ca
+</pre></div>
+</div>
+</div>
+<div class="section" id="tests">
+<h3>Tests<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h3>
+<p>We need to update the languages in our Tests to make sure the translation works correclty. Open the file <em>functional_tests/test_all_users.py</em>:</p>
+<ul class="simple">
+<li>in <strong>test_internationalization</strong>, update your languages with the translation of title text, here &#8220;Welcome to TaskBuster!&#8221;</li>
+<li>in <strong>test_localization</strong>, update your languages.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="useful-commands">
+<h2>Useful commands<a class="headerlink" href="#useful-commands" title="Permalink to this headline">¶</a></h2>
+<p>A list of all the commands used to run this template:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ workon tb_dev
+$ workon tb_test
+
+$ python manage.py makemessages -l ca
+$ python manage.py compilemessages -l ca
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Quick Start Guide</a><ul>
+<li><a class="reference internal" href="#download-taskbuster-django-project-boilerplate">Download TaskBuster Django Project Boilerplate</a></li>
+<li><a class="reference internal" href="#secret-django-key">Secret Django Key</a></li>
+<li><a class="reference internal" href="#project-name">Project Name</a></li>
+<li><a class="reference internal" href="#virtual-environments-and-settings-files">Virtual environments and Settings Files</a></li>
+<li><a class="reference internal" href="#internationalization-and-localization">Internationalization and Localization</a><ul>
+<li><a class="reference internal" href="#settings">Settings</a></li>
+<li><a class="reference internal" href="#translation">Translation</a></li>
+<li><a class="reference internal" href="#tests">Tests</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#useful-commands">Useful commands</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="requirements.html"
+                        title="previous chapter">Requirements</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/quick_start.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="requirements.html" title="Requirements"
+             >previous</a> |</li>
+        <li><a href="index.html">TaskBuster 0.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Marina Mele.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

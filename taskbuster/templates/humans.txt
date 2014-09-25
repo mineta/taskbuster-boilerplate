@@ -1,0 +1,18 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Marina Mele -- Developer -- @marina_mele
+
+# THANKS
+
+    Thanks to all my Blog readers, who encouraged
+    me to write the TaskBuster Django Tutorial
+
+# TECHNOLOGY COLOPHON
+
+    Django
+    HTML5 Boilerplate
+    Twitter Bootstrap
+

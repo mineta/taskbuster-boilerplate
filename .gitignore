@@ -1,0 +1,5 @@
+db.sqlite3
+__pycache__
+TaskBuster.sublime-workspace
+.coverage
+htmlcov
