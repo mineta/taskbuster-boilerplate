@@ -41,8 +41,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'django.contrib.sites',
-    # 'django.contrib.sitemaps',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -100,7 +98,4 @@ STATICFILES_DIRS = (
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, "templates"),
 )
-
-# Sites Framework
-# SITE_ID = 1
 
