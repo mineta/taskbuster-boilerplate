@@ -72,6 +72,9 @@ the name in a few places:
  - *taskbuster_project/taskbuster* **folder** (your project name)
  - virtual environment names: **tb_dev** and **tb_test** (name them whatever you want)
  - in virtual environments **postactivate** files (see section below), you have to change **taskbuster.settings.development** for your **projectname.settings.development**. Same works for the testing environment.
+ - in the **TaskBuster.sublime-project** and **TaskBuster.sublime-workspace** files. You should open the TaskBuster.sublime-project with Sublime Text and save it with another name.
+ - in *taskbuster_project/taskbuster* edit the file **wsgi.py** and change **"taskbuster.settings"** accordingly.
+ - in *taskbuster_project/taskbuster/settings* edit the **base.py** file and change the declarations of **ROOT_URLCONF** and **WSGI_APPLICATION**
 
 
 Virtual environments and Settings Files
@@ -130,6 +133,15 @@ Next, install the packages in each environment::
     $ workon tb_test
     $ pip install -r requirements/testing.txt
 
+Next, apply the basic migrations::
+
+    $ python manage.py validate
+    $ python manage.py migrate
+
+And check that everything works by starting the server::
+
+    $ python manage.py runserver
+    
 
 
 Internationalization and Localization
@@ -187,7 +199,7 @@ Once the translation is done, compile your messages with::
 Tests
 *****
 
-We need to update the languages in our Tests to make sure the translation works correclty. Open the file *functional_tests/test_all_users.py*:
+If you changed the default languages (English and Catalan), you need to update your Tests to make sure the translation works correclty. Open the file *functional_tests/test_all_users.py*:
 
 - in **test_internationalization**, update your languages with the translation of title text, here "Welcome to TaskBuster!"
 - in **test_localization**, update your languages.
