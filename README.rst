@@ -6,6 +6,8 @@ This is an awesome **Django Project Boilerplate**!!
 With this code you can start a *complex* Django Project 
 very quickly, with just a few steps!
 
+Updated for Django 1.8 and Python 3!
+
 Some of the TaskBuster Django Project Boilerplate functionalities are:
 
 - **different virtual environments** for developing, testing and production
