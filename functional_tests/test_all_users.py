@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import date
-from selenium.webdriver.firefox import webdriver
+from selenium import webdriver
 from django.core.urlresolvers import reverse
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from django.utils.translation import activate
@@ -10,7 +10,7 @@ from django.utils import formats
 class HomeNewVisitorTest(StaticLiveServerTestCase):
 
     def setUp(self):
-        self.browser = webdriver.WebDriver()
+        self.browser = webdriver.Firefox()
         self.browser.implicitly_wait(3)
         activate('en')
 
