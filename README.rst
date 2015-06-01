@@ -94,11 +94,11 @@ Next, create a Development virtual environment with Python 3 installed::
 
 where you might need to change it with your python path.
 
-Go to the virtual enviornment folder with::
+Go to the virtual environment folder with::
 
     $ cd $VIRTUAL_ENV/bin
 
-and edit the postactivate file.:
+and edit the postactivate file::
 
     $ vi postactivate
 
@@ -201,7 +201,7 @@ Once the translation is done, compile your messages with::
 Tests
 *****
 
-If you changed the default languages (English and Catalan), you need to update your Tests to make sure the translation works correclty. Open the file *functional_tests/test_all_users.py*:
+If you changed the default languages (English and Catalan), you need to update your Tests to make sure the translation works correctly. Open the file *functional_tests/test_all_users.py*:
 
 - in **test_internationalization**, update your languages with the translation of title text, here "Welcome to TaskBuster!"
 - in **test_localization**, update your languages.
