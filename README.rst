@@ -219,3 +219,9 @@ A list of all the commands used to run this template::
     $ python manage.py makemessages -l ca
     $ python manage.py compilemessages -l ca
 
+Using tbsetup.sh 
+----------------
+
+tbsetup.sh can be used to rename and adjsut the template.
+The script is documented at https://github.com/webanz/taskbuster-setup
+
