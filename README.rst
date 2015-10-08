@@ -77,6 +77,7 @@ the name in a few places:
  - in the **TaskBuster.sublime-project** and **TaskBuster.sublime-workspace** files. You should open the TaskBuster.sublime-project with Sublime Text and save it with another name.
  - in *taskbuster_project/taskbuster* edit the file **wsgi.py** and change **"taskbuster.settings"** accordingly.
  - in *taskbuster_project/taskbuster/settings* edit the **base.py** file and change the declarations of **ROOT_URLCONF** and **WSGI_APPLICATION**
+ - in taskbuster_project edit manage.py file and change os.environ.setdefault("DJANGO_SETTINGS_MODULE", "taskbuster.settings") 
 
 
 Virtual environments and Settings Files
