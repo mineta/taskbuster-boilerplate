@@ -45,6 +45,10 @@ And if you don't have GNU gettext, check this http://marinamele.com/taskbuster-d
 Quick Start Guide
 =================
 
+This Boilerplate comes with a script, tbsteup.sh, to configure the Django Project Template. See https://github.com/webanz/taskbuster-setup for more information about how to use it.
+
+Here are the details of the manual installation and configuration:
+
 Download TaskBuster Django Project Boilerplate
 ----------------------------------------------
 
