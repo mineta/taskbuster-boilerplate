@@ -1,2 +1,2 @@
-Django==1.8
-pytz==2014.4
+Django==1.8.5
+pytz==2015.6
